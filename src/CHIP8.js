@@ -12,7 +12,7 @@ const CHIP8 = (LOGGER) => {
     this.rGPIO = new Array(16).fill(0);
 
     // Display Buffer
-    this.displayBuffer = new Array(32*64).fill(0);
+    this.displayBuffer = new Uint8ClampedArray(32 * 64).fill(0);
 
     // Stack
     this.stack = new Array()
@@ -47,6 +47,26 @@ const CHIP8 = (LOGGER) => {
     // 16-bit register for storing memory address
     this.rI = 0;
 
+    // Program Counter
+    this.pc = 0;
+
+
+    // Timers
+    this.delay_timer = 0;
+    this.sound_timer = 0;
+
+
+    // OP Map
+    this.opMap = {};
+
+    // Represents Address Of Specific Registers
+    this.vx = 0;
+    this.vy = 0;
+
+    // Calls machine code routine NNN
+    this._0NNN = () => {
+        const extracted_op = this.opcode & 0xf0ff
+    }
 
 
 }
